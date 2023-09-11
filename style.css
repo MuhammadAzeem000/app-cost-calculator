@@ -1,0 +1,24 @@
+ /* Start adding Right pannel html and css - aui  */
+
+.dollar-sign{
+    font-size: 50px;
+    font-weight: bold;
+}
+.hidden-price{
+    filter: blur(10px);
+    font-size: 50px;
+    font-weight: bold;
+}
+.right-pannel-pera{
+    font-style: italic;
+    line-height: 1.2;
+}
+.right-pannel-button{
+    border-radius: 50px;
+    padding: 10px;
+    
+}
+.right-pannel-hr{
+    opacity: 100%;
+}
+ /* End adding Right pannel html and css - aui  */
