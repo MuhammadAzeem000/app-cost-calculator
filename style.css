@@ -131,7 +131,7 @@ body {
 }
 
 .steps-progress-bar {
-    width: 16%;
+    width: 0%;
     height: 100%;
     background-color: var(--secondary-color);
     transition: width .4s ease;
@@ -179,6 +179,20 @@ body {
     padding: 10px 0px;
     width: 100%;
 
+}
+ul{
+    overflow: hidden;
+    padding: 0;
+}
+ul.properties-container li.property{
+    padding: 5px;
+    display: inline-block;
+    list-style: none;
+    border: 2px solid var(--secondary-color);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 /* End adding Right pannel html and css - aui  */
