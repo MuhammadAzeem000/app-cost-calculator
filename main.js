@@ -5,12 +5,29 @@ const progress_bar_data = [{
     questions: [{
         question: "How will you engage your users?",
         choices: ["Web", "Mobile", "Both"]
+    },
+    {
+        question: "what is your father name?",
+        choices: ["Web", "Mobile", "Both"]
+    },
+    {
+        question: "what is your mother name?",
+        choices: ["Web", "Mobile", "Both"]
+    },
+    {
+        question: "what is your sister name?",
+        choices: ["Web", "Mobile", "Both"]
+    },
+    {
+        question: "what is your brother name?",
+        choices: ["Web", "Mobile", "Both"]
     }]
 },
 {
     title: "Features",
     isDone: true,
     state: false,
+    questions: []
 },
 {
     title: "Communication",
@@ -20,13 +37,56 @@ const progress_bar_data = [{
 {
     title: "Interactivity",
     isDone: false,
-    state: false
+    state: false,
+        questions: [{
+        question: "How will you engage your users?",
+        choices: ["Web", "Mobile", "Both"]
+    },
+    {
+        question: "what is your father name?",
+        choices: ["Web", "Mobile", "Both"]
+    },
+    {
+        question: "what is your mother name?",
+        choices: ["Web", "Mobile", "Both"]
+    },
+    {
+        question: "what is your sister name?",
+        choices: ["Web", "Mobile", "Both"]
+    },
+    {
+        question: "what is your brother name?",
+        choices: ["Web", "Mobile", "Both"]
+    }]
 },
 {
     title: "Security",
     isDone: false,
     state: false
 }]
+
+// aui code Start
+
+const totalQuestions = 30;
+const answerQuestions = 25;
+
+function calculateProgressBar(totalQuestions, answerQuestions) {
+    const displayTotalQuestion = document.querySelector("#total-question-display");
+    const displayAnswerQuestion = document.querySelector("#answerd-question-display");
+
+    const progressPercentage = answerQuestions / totalQuestions * 100;
+
+    document.querySelector(".steps-progress-bar").style.width = `${progressPercentage}%`
+
+    displayTotalQuestion.innerText = totalQuestions;
+    displayAnswerQuestion.innerText = answerQuestions;
+}
+
+calculateProgressBar(totalQuestions, answerQuestions);
+
+// aui code End
+
+
 
 let main = document.getElementById('progress_main');
 main.innerHTML = '';
@@ -48,6 +108,10 @@ progress_bar_data.map((object, index) => {
     box.append(title, number);
 
     main.append(box)
+    
+    
+    
 
 
 })
+
