@@ -4,7 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>App Calculator</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat&amp;family=Poppins:wght@300;400;500;600;700;900&amp;display=swap"
+        rel="stylesheet">
+    <title>PEBTECH SOLUTIONS | Application Cost Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -13,6 +17,7 @@
     :root {
         --primary-color: #151522;
         --secondary-color: #c80404;
+        --white: #fff;
         --bullet-size: 30px;
     }
 
@@ -21,15 +26,185 @@
         margin: 0;
         padding: 0;
     }
+
+    body {
+        background-color: var(--primary-color);
+        font-family: "Poppins", sans-serif;
+    }
+
+    .calculator button {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+        color: var(--white);
+        padding: 5px 50px;
+        border-radius: 0px;
+    }
+
+    .calculator {
+        background-color: rgba(2, 2, 2, 0.60);
+        padding: 15px 15px;
+    }
+
+    .calculator h6 {
+        font-size: 1rem;
+        color: var(--white);
+    }
+
+    .calc_progress_bar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .calc_progress_box {
+        width: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calc_progress_box_title {
+        font-size: 12px;
+        font-weight: 400;
+        color: var(--white);
+        text-align: center;
+        line-height: 1.2;
+        margin-bottom: 5px;
+    }
+
+    .calc_progress_box_number {
+        height: 30px;
+        width: 30px;
+        background-color: var(--white);
+        color: var(--primary-color);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 400;
+    }
+
+    .calc_progress_box.done .calc_progress_box_number {
+        background-color: var(--secondary-color);
+        color: var(--white);
+
+    }
+
+    .calc_progress_box.active .calc_progress_box_number {
+        position: relative;
+        background-color: var(--secondary-color);
+    }
+
+    .calc_progress_box.active .calc_progress_box_number::after {
+        content: '';
+        height: 70%;
+        width: 70%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 3px;
+        background-color: var(--white);
+    }
+
+    .cal_questions {
+        text-align: center;
+    }
+
+    .cal_each_question>h2 {
+        font-size: 25px;
+        font-weight: 500;
+        color: var(--white);
+        line-height: 1.3;
+        text-align: center;
+        letter-spacing: 0px;
+    }
+
+    .cal_choices {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .cal_choices .cal_each_choice {
+        display: flex;
+        align-items: center;
+    }
+
+    .cal_choices .cal_each_choice h6 {
+        color: var(--white);
+        margin: 0px 0px 0px 15px;
+        font-size: 1rem;
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 3px;
+        position: relative;
+    }
+
+    .steps-progress-bar {
+        width: 16%;
+        height: 100%;
+        background-color: var(--secondary-color);
+        transition: width .4s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    .steps-progress-bar-neutral {
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 </style>
 
 <body>
     <section class="container">
         <div class="row">
-            <div class="col-md-8 p-5">
-                <div class="calculator">
-                    <div class="calc_progress_bar">
+            <div class="col-md-8">
+                <div class="calculator p-5">
+                    <div id="progress_main" class="calc_progress_bar my-5"></div>
+                    <div class="cal_questions">
+                        <div class="cal_each_question my-5">
+                            <h6 class="mb-2">Please, select one or multiple options</h6>
+                            <h2 class="mb-5">How will you engage your users?</h2>
+                            <div class="cal_choices">
+                                <div class="cal_each_choice">
+                                    <input type="checkbox" />
+                                    <h6>Website</h6>
+                                </div>
+                                <div class="cal_each_choice">
+                                    <input type="checkbox" />
+                                    <h6>Mobile</h6>
+                                </div>
+                                <div class="cal_each_choice">
+                                    <input type="checkbox" />
+                                    <h6>Both</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="progress-bar-container mb-5">
+                        <h6 class="mb-3">Question 9 of 27</h6>
+                        <div class="progress-bar">
+                            <div class="steps-progress-bar"></div>
+                            <div class="steps-progress-bar-neutral"></div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center gap-5">
+                        <button>Back</button>
+                        <button>Next</button>
                     </div>
                 </div>
             </div>
@@ -40,6 +215,63 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+
+    <script>
+        const progress_bar_data = [{
+            title: "Product",
+            isDone: true,
+            state: false,
+            questions: [{
+                question: "How will you engage your users?",
+                choices: ["Web", "Mobile", "Both"]
+            }]
+        },
+        {
+            title: "Features",
+            isDone: true,
+            state: false,
+        },
+        {
+            title: "Communication",
+            isDone: false,
+            state: true,
+        },
+        {
+            title: "Interactivity",
+            isDone: false,
+            state: false
+        },
+        {
+            title: "Security",
+            isDone: false,
+            state: false
+        }]
+
+        let main = document.getElementById('progress_main');
+        main.innerHTML = '';
+
+        progress_bar_data.map((object, index) => {
+            let box = document.createElement('div');
+            let title = document.createElement('div');
+            let number = document.createElement('div');
+
+            title.append(object.title)
+            number.append(index + 1)
+
+            object.isDone === true ? box.classList.add("calc_progress_box", "done") : box.classList.add("calc_progress_box");
+            object.state === true ? box.classList.add("calc_progress_box", "active") : box.classList.add("calc_progress_box");
+
+            title.classList.add("calc_progress_box_title");
+            number.classList.add("calc_progress_box_number");
+
+            box.append(title, number);
+
+            main.append(box)
+
+
+        })
+
+    </script>
 </body>
 
 </html>
